@@ -61,7 +61,10 @@ end
 function jump()
     spawn(function()
         while wait() do
-            if not autoJump then break end
+            if not autoJump then
+                vim:SendKeyEvent(false, 119, false, game)
+                break
+            end
             local player = game.Players.LocalPlayer
             local x = player.Character.HumanoidRootPart.CFrame.x
             local y = player.Character.HumanoidRootPart.CFrame.y
@@ -114,7 +117,6 @@ a:Toggle("Auto Jump",function(bool)
     getgenv().cameraLock = bool
     jump()
     lockCamera()
-    vim:SendKeyEvent(false, 119, false, game)
 end)
 
 --MISC--
