@@ -13,6 +13,7 @@ getgenv().autoUpgradeSpeed = false
 
 local buy = game:GetService("ReplicatedStorage").Events.PurchaseItem
 local player = game.Players.LocalPlayer
+local spawnLocation = CFrame.new(-414.717072, 68.2445068, -110.162308)
 local e100k = CFrame.new(202.963257,65.2400017,-221.57991)
 local p500m = CFrame.new(398.000031, 167.237869, -517.148071)
 local e10k = CFrame.new(253.780029, 85.1365509, -310.04599)
@@ -30,6 +31,19 @@ local s5m = CFrame.new(-668.338013, 141.708107, -1154.0564)
 local e5m = CFrame.new(-633.691223, 85.5641403, -34.2950859)
 local s1k = CFrame.new(-781.927185, 85.3344269, -356.250061)
 local p10k = CFrame.new(-887.459656, 110.119049, -466.301239)
+local e50b = CFrame.new(-1523.10522, 64.4658585, -1994.56982)
+local e30t = CFrame.new(-1517.45947, 64.4798813, -1715.58093)
+local s50b = CFrame.new(-1615.35425, 64.4798813, -1775.50659)
+local p50b = CFrame.new(-1483.75525, 64.5762253, -1902.66345)
+local s30t = CFrame.new(-1396.73804, 105.7648697, -1878.51819)
+local p30t = CFrame.new(-1421.84253, 65.5298805, -1751.08765)
+local p10qa = CFrame.new(999.653625, 65.3254051, 973.910583)
+local e10qa = CFrame.new(1281.30908, 53.2159081, 835.958862)
+local s10qa = CFrame.new(1144.33411, 67.8855515, 941.762756)
+local s25qi = CFrame.new(1002.85077, 68.2787056, 839.671875)
+local p25qi = CFrame.new(1015.05005, 220.121262, 858.249023)
+local e25qi = CFrame.new(798.797729, 64.6644058, 707.896362)
+
 --AUTOS--
 function psychic()
 	spawn(function ()
@@ -97,6 +111,9 @@ end
 
 --TELEPORTS--
 function teleport(location)
+	if location == "spawn" then
+		player.Character.HumanoidRootPart.CFrame = spawnLocation
+	end
 	if location == "500m Psychic" then 
 		player.Character.HumanoidRootPart.CFrame = p500m
 	end
@@ -147,6 +164,42 @@ function teleport(location)
 	end
 	if location == "10k Psychic" then
 		player.Character.HumanoidRootPart.CFrame = p10k
+	end
+	if location == "50b Endurance" then
+		player.Character.HumanoidRootPart.CFrame = e50b
+	end
+	if location == "30t Endurance" then
+		player.Character.HumanoidRootPart.CFrame = e30t
+	end
+	if location == "50b Strength" then
+		player.Character.HumanoidRootPart.CFrame = s50b
+	end
+	if location == "50b Psychic" then
+		player.Character.HumanoidRootPart.CFrame = p50b
+	end
+	if location == "30t Strength" then
+		player.Character.HumanoidRootPart.CFrame = s30t
+	end
+	if location == "30t Psychic" then
+		player.Character.HumanoidRootPart.CFrame = p30t
+	end
+	if location == "10qa Psychic" then
+		player.Character.HumanoidRootPart.CFrame = p10qa
+	end
+	if location == "10qa Endurance" then
+		player.Character.HumanoidRootPart.CFrame = e10qa
+	end
+	if location == "10qa Strength" then
+		player.Character.HumanoidRootPart.CFrame = s10qa
+	end
+	if location == "25qi Strength" then
+		player.Character.HumanoidRootPart.CFrame = s25qi
+	end
+	if location == "25qi Psychic" then
+		player.Character.HumanoidRootPart.CFrame = p25qi
+	end
+	if location == "25qi Endurance" then
+		player.Character.HumanoidRootPart.CFrame = e25qi
 	end
 end
 
@@ -250,7 +303,7 @@ end)
 
 --TELEPORTS--
 local selectedEndurance;
-t:Dropdown("Endurance",{"100 Endurance","1k Endurance","10k Endurance","100k Endurance","5m Endurance","500m Endurance"},true,function(value)
+t:Dropdown("Endurance",{"100 Endurance","1k Endurance","10k Endurance","100k Endurance","5m Endurance","500m Endurance","50b Endurance","30t Endurance","10qa Endurance","25qi Endurance"},true,function(value)
     selectedEndurance = value;
 	if selectedEndurance then
 		teleport(selectedEndurance)
@@ -258,7 +311,7 @@ t:Dropdown("Endurance",{"100 Endurance","1k Endurance","10k Endurance","100k End
 end)
 
 local selectedStrength
-t:Dropdown("Strength",{"100 Strength","1k Strength","10k Strength","100k Strength","5m Strength","500m Strength"},true,function(value)
+t:Dropdown("Strength",{"100 Strength","1k Strength","10k Strength","100k Strength","5m Strength","500m Strength","50b Strength","30t Strength","10qa Strength","25qi Strength"},true,function(value)
     selectedStrength = value;
 	if selectedStrength then
 		teleport(selectedStrength)
@@ -266,11 +319,15 @@ t:Dropdown("Strength",{"100 Strength","1k Strength","10k Strength","100k Strengt
 end)
 
 local selectedPsychic
-t:Dropdown("Psychic",{"1k Psychic","10k Psychic","100k Psychic","5m Psychic","500m Psychic"},true,function(value)
+t:Dropdown("Psychic",{"1k Psychic","10k Psychic","100k Psychic","5m Psychic","500m Psychic","50b Psychic","30t Psychic","10qa Psychic","25qi Psychic"},true,function(value)
     selectedPsychic = value;
 	if selectedPsychic then
 		teleport(selectedPsychic)
 	end
+end)
+
+t:Button("Teleport to Spawn",function()
+	teleport("spawn")
 end)
 
 --BUY CHESTS
