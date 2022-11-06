@@ -26,8 +26,10 @@ local p1k = CFrame.new(-884.125549, 85.806572, -434.067017)
 local p5m = CFrame.new(-858.992432, 85.0320969, -43.2305489)
 local e100 = CFrame.new(-764.503479, 85.1365509, -620.936523)
 local s100k = CFrame.new(-958.396423, 85.4565506, -154.64743)
-local s500m = CFrame.new(-668.338013, 101.708107, -1154.0564)
-
+local s5m = CFrame.new(-668.338013, 141.708107, -1154.0564)
+local e5m = CFrame.new(-633.691223, 85.5641403, -34.2950859)
+local s1k = CFrame.new(-781.927185, 85.3344269, -356.250061)
+local p10k = CFrame.new(-887.459656, 110.119049, -466.301239)
 --AUTOS--
 function psychic()
 	spawn(function ()
@@ -134,8 +136,17 @@ function teleport(location)
 	if location == "100k Strength" then
 		player.Character.HumanoidRootPart.CFrame = s100k
 	end
-	if location == "500m Strength" then
-		player.Character.HumanoidRootPart.CFrame = s500m
+	if location == "5m Strength" then
+		player.Character.HumanoidRootPart.CFrame = s5m
+	end
+	if location == "5m Endurance" then
+		player.Character.HumanoidRootPart.CFrame = e5m
+	end
+	if location == "1k Strength" then
+		player.Character.HumanoidRootPart.CFrame = s1k
+	end
+	if location == "10k Psychic" then
+		player.Character.HumanoidRootPart.CFrame = p10k
 	end
 end
 
@@ -239,7 +250,7 @@ end)
 
 --TELEPORTS--
 local selectedEndurance;
-t:Dropdown("Endurance",{"100 Endurance","1k Endurance","10k Endurance","100k Endurance","500m Endurance"},true,function(value)
+t:Dropdown("Endurance",{"100 Endurance","1k Endurance","10k Endurance","100k Endurance","5m Endurance","500m Endurance"},true,function(value)
     selectedEndurance = value;
 	if selectedEndurance then
 		teleport(selectedEndurance)
@@ -247,7 +258,7 @@ t:Dropdown("Endurance",{"100 Endurance","1k Endurance","10k Endurance","100k End
 end)
 
 local selectedStrength
-t:Dropdown("Strength",{"100 Strength","10k Strength","100k Strength","500m Strength"},true,function(value)
+t:Dropdown("Strength",{"100 Strength","1k Strength","10k Strength","100k Strength","5m Strength","500m Strength"},true,function(value)
     selectedStrength = value;
 	if selectedStrength then
 		teleport(selectedStrength)
@@ -255,7 +266,7 @@ t:Dropdown("Strength",{"100 Strength","10k Strength","100k Strength","500m Stren
 end)
 
 local selectedPsychic
-t:Dropdown("Psychic",{"1k Psychic","100k Psychic","5m Psychic","500m Psychic"},true,function(value)
+t:Dropdown("Psychic",{"1k Psychic","10k Psychic","100k Psychic","5m Psychic","500m Psychic"},true,function(value)
     selectedPsychic = value;
 	if selectedPsychic then
 		teleport(selectedPsychic)
