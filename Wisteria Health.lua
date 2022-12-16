@@ -31,6 +31,7 @@ while loop do
 		v:WaitForChild("HealthTag")
 		v.Humanoid.Health = v.HealthTag.Value
 		v.Humanoid.MaxHealth = v.HealthTag.MaxValue
+		v.Humanoid.HealthDisplayDistance = 200
 	end
 	wait(1)
 end
